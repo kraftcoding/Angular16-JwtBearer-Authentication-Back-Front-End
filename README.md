@@ -1,4 +1,4 @@
-#Token-Based Authentication with Angular 16 and .Net 8 WebAPI
+# Token-Based Authentication with Angular 16 and .Net 8 WebAPI
 
 Token-based authentication is a popular approach to securing web applications, providing a stateless and scalable way to verify user identities. In this implementation, we'll explore how to integrate token-based authentication using Angular 16 as the frontend framework and .Net 8 WebAPI as the backend API.
 
