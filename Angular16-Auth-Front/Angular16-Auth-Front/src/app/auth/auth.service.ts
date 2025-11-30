@@ -13,8 +13,7 @@ export class AuthService {
   signIn(user: any) {
     return this.http
       .post<any>('http://localhost:5000/api/login', user)
-      .subscribe((res: any) => {
-      
+      .subscribe((res: any) => {      
         localStorage.setItem('access_token', res.access_token);
         this.router.navigate(['/element']);
       });

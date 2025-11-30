@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Angular16-Auth-Front\node_modules\**" />
+    <EmbeddedResource Remove="Angular16-Auth-Front\node_modules\**" />
+    <None Remove="Angular16-Auth-Front\node_modules\**" />
+  </ItemGroup>
+
 </Project>
