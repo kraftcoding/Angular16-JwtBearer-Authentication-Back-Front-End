@@ -5,14 +5,16 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
-  constructor(private router:Router, private http:HttpClient, @Inject('APIREQRES') public Apiurl:string) { }
+  constructor(private router:Router, private http:HttpClient, @Inject('APIREQRES') public Apiurl:string) 
+  { }
 
   // Sign-in
   signIn(user: any) {
     return this.http
-      .post<any>('http://localhost:5000/api/login', user)
+      .post<any>(this.Apiurl, user)
       .subscribe((res: any) => {      
         localStorage.setItem('access_token', res.access_token);
         this.router.navigate(['/element']);
@@ -26,15 +28,12 @@ export class AuthService {
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
     return authToken !== null ? true : false;
-    //return true;
   }
 
   doLogout() {
-    let removeToken = localStorage.removeItem('access_token');
-    if (removeToken == null) {
-      this.router.navigate(['log-in']);
-    }
-  }
+    localStorage.removeItem('access_token');    
+    //this.router.navigate(['/login']);  
+  }  
 
   get apiUrl(){
     return this.Apiurl

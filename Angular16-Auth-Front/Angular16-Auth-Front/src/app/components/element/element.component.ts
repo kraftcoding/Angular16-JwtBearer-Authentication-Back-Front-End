@@ -12,6 +12,8 @@ import {ReactiveFormsModule } from "@angular/forms";
 
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name?: string ;
@@ -40,29 +42,30 @@ const ELEMENT_DATA: PeriodicElement[] = [
   selector: 'app-element',
   standalone: true,
   imports: [
-    CommonModule,
+     CommonModule,
      MatTableModule,
      MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
+     MatButtonModule,
+     MatFormFieldModule,
+     MatInputModule,
+     FormsModule,
+     ReactiveFormsModule
     ],
   templateUrl: './element.component.html',
   styleUrls: ['./element.component.css']
 })
 
 export class ElementComponent {
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource: MatTableDataSource<any>;
+  
 
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog, public router:Router){
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-   
     
   }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog,{
       height: '400px',
@@ -70,14 +73,20 @@ export class ElementComponent {
     }) 
     dialogRef.afterClosed().subscribe(result => {
      if(result=='ok'){
-      console.log('mi resultado',result)
+      console.log('mi result',result)
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
      }
       
     });
+  }
+
+  doLogout(){   
+    AuthService.prototype.doLogout.call(this);
+    this.router.navigate(['/login']);
+  }
+  
 }
 
-}
 @Component({
   selector: 'dialog-overview-example-dialog',
   standalone: true,
@@ -88,13 +97,14 @@ export class ElementComponent {
     CommonModule,
      MatTableModule,
      MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
+     MatButtonModule,
+     MatFormFieldModule,
+     MatInputModule,
+     FormsModule,
+     ReactiveFormsModule
     ],
 })
+
 export class DialogOverviewExampleDialog {
 
   constructor(
@@ -108,13 +118,15 @@ export class DialogOverviewExampleDialog {
     weight:0,
     symbol:''
   })
+ 
   onSubmit(){
     console.log(this.elementForm.value)
     const elemento={...this.elementForm.value, position:ELEMENT_DATA.length+1}
     ELEMENT_DATA.push(elemento)
   }
+ 
   onNoClick(): void {
     this.dialogRef.close();
   }
- 
+  
 }

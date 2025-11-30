@@ -9,9 +9,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL-Database", "SQL-Databas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular16-Auth-Front", "Angular16-Auth-Front\Angular16-Auth-Front.csproj", "{5E83D96D-34E2-E140-BB01-2C0A5435D348}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		Notes\CORS-disable-web-security.txt = Notes\CORS-disable-web-security.txt
+		Notes\CORS-disable-web-security.bat = Notes\CORS-disable-web-security.bat
 	EndProjectSection
 EndProject
 Global

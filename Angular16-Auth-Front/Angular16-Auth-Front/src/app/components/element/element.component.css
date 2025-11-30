@@ -1,10 +1,17 @@
 table {
     width: 100%;
   }
-  form {
+  
+form {
     padding: 20px;
     width: 90%;
   }
-  mat-form-field {
+
+mat-form-field {
     width: 100%;
-  }
+}
+
+.logout-button {
+    text-align: right;
+    margin: 10px;
+}

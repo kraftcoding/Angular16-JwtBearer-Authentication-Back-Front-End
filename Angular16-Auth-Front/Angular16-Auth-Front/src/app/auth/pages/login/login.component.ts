@@ -7,12 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule,
+   CommonModule,
    MatButtonModule,
    MatFormFieldModule,
    MatInputModule,
@@ -31,13 +30,17 @@ export class LoginComponent {
     public fb: FormBuilder,
     public authService: AuthService,
     public router: Router
-  ) {
-   
-  }
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    if (!this.authService.isLoggedIn) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/element']);
+    }      
+  }
 
   loginUser() {
     this.authService.signIn(this.signinForm.value)
-  }
+  }  
 }

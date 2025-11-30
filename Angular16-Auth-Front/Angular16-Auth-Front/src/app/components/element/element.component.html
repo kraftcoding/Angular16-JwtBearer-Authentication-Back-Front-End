@@ -1,7 +1,15 @@
 <h2>Element List</h2>
+
 <!--<button mat-raised-button color="primary" (click)="openDialog()">
   Pick one
 </button>-->
+
+<div class="logout-button">
+  <button mat-raised-button color="primary" (click)="doLogout()">
+    Log out
+  </button> 
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
